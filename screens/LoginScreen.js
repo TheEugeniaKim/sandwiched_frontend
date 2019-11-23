@@ -2,7 +2,9 @@ import React from 'react'
 import { View, Button, Image, Text, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import { login } from '../actions/userActions'
-import t from 'tcomb-form-native';
+import t from 'tcomb-form-native'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+
 
 const Form = t.form.Form;
 
@@ -38,30 +40,25 @@ class LoginScreen extends React.Component {
 
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Image 
-          style={{height: 130, width: 240}}
-          source={require('../sandwiched_logo.png')} 
-        />
-        <Text>Don't have an account yet?</Text>
-        <Button 
-          title="Join Now" 
-          onPress={() => {this.props.navigation.navigate('SignUp')}}
-        />
-        <Form 
-          ref={c => this._form = c}
-          type={User} 
-        /> 
-        <Button
-          title="Login"
-          onPress={this.handleSubmit}
-        />
-
-        {/* <Button
-          title="Go to Home"
-          onPress={() => {
-            this.props.navigation.navigate('Home') 
-          }}
-        /> */}
+        <KeyboardAwareScrollView >
+          <Image 
+            style={{height: 130, width: 240}}
+            source={require('../sandwiched_logo.png')} 
+          />
+          <Text>Don't have an account yet?</Text>
+          <Button 
+            title="Join Now" 
+            onPress={() => {this.props.navigation.navigate('SignUp')}}
+          />
+          <Form 
+            ref={c => this._form = c}
+            type={User} 
+          /> 
+          <Button
+            title="Login"
+            onPress={this.handleSubmit}
+          />
+        </KeyboardAwareScrollView>
       </View>
     )
   }  
