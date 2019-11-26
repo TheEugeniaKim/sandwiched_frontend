@@ -11,9 +11,22 @@ const CreateUser = t.struct({
     last_name: t.String,
     email: t.String,
     password: t.String,
-    birthday: t.Date, 
-    phone: t.Number 
-});
+    phone: t.Number,
+    birthday: t.Date
+})
+
+const options = {
+    fields : {
+        Recorded_Date: {
+            label: 'birthday',
+            mode: 'date',
+            config: {
+            format: (date) => moment(date).format('DD-MMM-YYYY'),
+            },
+        },
+    }
+}
+
 
 
 class SignupScreen extends React.Component {
@@ -45,7 +58,7 @@ class SignupScreen extends React.Component {
 
     render() {
         return(
-            <View>
+            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                 <KeyboardAwareScrollView>
 
                     <Image 
@@ -55,6 +68,7 @@ class SignupScreen extends React.Component {
                     <Form 
                         ref={c => this._form = c}
                         type={CreateUser} 
+                        options={options}
                         /> 
                     <Button 
                         title="Create User"

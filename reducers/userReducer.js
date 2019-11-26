@@ -11,10 +11,10 @@ const userReducer = (state = initialState, action) => {
         case "LOGIN":
             return { ...state, 
                 loggedIn: true,
-                email: action.payload.user.email,
-                userId: action.payload.user.id,
-                firstName: action.payload.user.first_name,
-                lastName: action.payload.user.last_name
+                email: action.payload.email,
+                userId: action.payload.id,
+                firstName: action.payload.first_name,
+                lastName: action.payload.last_name
             }
         default:
             return state
@@ -22,4 +22,4 @@ const userReducer = (state = initialState, action) => {
 
 }
 
-export default menuReducer
+export default userReducer

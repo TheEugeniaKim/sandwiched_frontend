@@ -1,32 +1,34 @@
 import React from 'react'
 import { View, Text, Button, Image } from 'react-native'
 import { connect } from 'react-redux'
-import { addText } from '../actions/menuActions'
+
 
 function HomeScreen(props){
     return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Hangry?</Text>
-        <Image 
-            style={{height: 130, width: 240}}
-            source={require('../sandwiched_logo.png')} 
-        />
-        <Button
-        title="Login/Signup" 
-        onPress={() => {
-            props.addText('John Doe')
-            props.navigation.navigate('Login') 
-        }}
-        />
-    </View>
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <Text>Hangry?</Text>
+            <Image 
+                style={{height: 130, width: 240}}
+                source={require('../sandwiched_logo.png')} 
+            />
+            <Button
+            title="Login/Signup" 
+            onPress={() => {
+                props.navigation.navigate('Login') 
+            }}
+            />
+        </View>
     )
 }  
 
 function mapStateToProps(state){
     return {
-        text: state.text
+        sandwiches: state.sandwiches,
+        ingredients: state.ingredients
     }
 }
 
+const connectedHomeScreen = connect(mapStateToProps, null)(HomeScreen)
 
-export default connect(mapStateToProps, {addText})(HomeScreen)
+
+export default connectedHomeScreen
