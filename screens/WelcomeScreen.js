@@ -41,7 +41,7 @@ class WelcomeScreen extends React.Component {
 
 function mapStateToProps(state){
     return {
-      firstName: state.userReducer.firstName,
+      firstName: state.userReducer.firstName
     }
   }
 

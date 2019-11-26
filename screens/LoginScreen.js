@@ -4,8 +4,6 @@ import { connect } from 'react-redux'
 import { login } from '../actions/userActions'
 import t from 'tcomb-form-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import { getSandwiches, getIngredients } from '../actions/menuActions'
-
 
 const Form = t.form.Form;
 
@@ -15,8 +13,6 @@ const User = t.struct({
 });
 
 class LoginScreen extends React.Component {
-
-  
 
   handleSubmit = () => {
     const value = this._form.getValue()
@@ -83,9 +79,7 @@ class LoginScreen extends React.Component {
   }
 
   const connectedLoginScreen = connect(mapStateToProps, {
-    login,
-    getSandwiches,
-    getIngredients
+    login
   })(LoginScreen)
 
 export default connectedLoginScreen

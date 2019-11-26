@@ -33,7 +33,6 @@ class SignupScreen extends React.Component {
 
     createUser = () => {
         const value = this._form.getValue()
-        console.log(value)
         fetch('http://smi.local:3000/users', {
             method: "POST",
             headers: {

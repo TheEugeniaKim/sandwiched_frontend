@@ -1,34 +1,54 @@
 import React from 'react';
-import { SafeAreaView, View, FlatList, StyleSheet, Text } from 'react-native';
+import { TouchableOpacity, View, StyleSheet, Text } from 'react-native';
 import Constants from 'expo-constants';
+import { connect } from 'react-redux'
+import { withNavigation } from 'react-navigation'
+import { selectedSandwichCategory } from '../actions/menuActions'
 
 
 function SandwichCategoryComponent(props){
-    // let categories = props.sandwiches.map(sandwich => sandwich.category)
-    // let uniqueCategories = categories.filter((v,i) => categories.indexOf(v) === i)
-    console.log("Props here==> ",props)
+    
     return (
+        
       <View style={styles.item}>
-        <Text style={styles.title}>{props.category}</Text>
+        <TouchableOpacity
+            onPress={() => {
+                props.selectedSandwichCategory(props.category)
+                props.navigation.navigate('SandwichCategoryShow')
+            }}
+            // style={[
+            //     styles.item,
+            //     { backgroundColor: selected ? '#6e3b6e' : '#f9c2ff' },
+            // ]}
+        >
 
+        <Text style={styles.title}>{props.category}</Text>
+        </TouchableOpacity>
       </View>
     )
 }
 
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      marginTop: Constants.statusBarHeight,
-    },
-    item: {
-      backgroundColor: '#E39A66',
-      padding: 20,
-      marginVertical: 4,
-      marginHorizontal: 16,
-    },
-    title: {
-      fontSize: 32,
-    },
-  });
+const styles = StyleSheet.create({
+container: {
+    flex: 1,
+    marginTop: Constants.statusBarHeight,
+},
+item: {
+    backgroundColor: '#E39A66',
+    padding: 20,
+    marginVertical: 4,
+    marginHorizontal: 16,
+},
+title: {
+    fontSize: 32,
+},
+});
   
-export default SandwichCategoryComponent
+function mapStateToProps(state){
+    return {newState: state} 
+}
+
+
+const connectedSandwichCategoryComponent = connect(mapStateToProps, {selectedSandwichCategory})(withNavigation(SandwichCategoryComponent))
+
+export default connectedSandwichCategoryComponent

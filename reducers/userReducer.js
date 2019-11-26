@@ -3,7 +3,8 @@ const initialState = {
     email: "",
     userId: null,
     firstName: "",
-    lastName: ""
+    lastName: "",
+    cart: []
 }
 
 const userReducer = (state = initialState, action) => {

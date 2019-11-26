@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Button, Text, StyleSheet, FlatList } from 'react-native'
+import { View, Text, StyleSheet, FlatList } from 'react-native'
 import { connect } from 'react-redux'
 import SandwichCategoryComponent from '../components/SandwichCategoryComponent'
 
@@ -15,12 +15,10 @@ function MenuScreen(props){
         {id: 7, category: "Grilled Steak"},
         {id: 8, category: "Build Your Own"}
     ]
-    // let sandwiches = props.newState.menuReducer.sandwiches
-    // let categories = sandwiches.map(sandwich => sandwich.category)
-    // let uniqueCategories = categories.filter((v,i) => categories.indexOf(v) === i)
+
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text>YOU ARE ON THE MENU PAGE..</Text>
+            <Text> Menu </Text>
             <FlatList
                 data={categories}
                 renderItem={({item}) => <SandwichCategoryComponent category={item.category}/>}
@@ -31,7 +29,7 @@ function MenuScreen(props){
 }
 
 function mapStateToProps(state){
-    return {newState: state}   
+    return {newState: state} 
 }
 
 const connectedMenuScreen = connect(mapStateToProps, null)(MenuScreen)
