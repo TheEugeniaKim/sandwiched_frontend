@@ -17,6 +17,10 @@ const userReducer = (state = initialState, action) => {
                 firstName: action.payload.first_name,
                 lastName: action.payload.last_name
             }
+        case "ADD_SANDWICH_TO_CART":
+            return {...state, 
+                cart: [...state.cart, action.payload]
+            }
         default:
             return state
     }

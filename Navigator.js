@@ -8,6 +8,7 @@ import MenuScreen from './screens/MenuScreen'
 import SandwichCategoryShowScreen from './screens/SandwichCategoryShowScreen'
 import SandwichShowScreen from './screens/SandwichShowScreen'
 import CartScreen from './screens/CartScreen'
+import ConfirmationScreen from './screens/ConfirmationScreen'
 
 export default createAppContainer( 
   createStackNavigator({
@@ -34,7 +35,10 @@ export default createAppContainer(
   },
   Cart: {
     screen: CartScreen
-  }
+  },
+  Confirmation: {
+    screen: ConfirmationScreen
+  },
 }, {
     initialRouteName: 'Home',
   }
