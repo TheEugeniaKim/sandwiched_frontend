@@ -70,7 +70,7 @@ class LoginScreen extends React.Component {
       padding: 120,
       backgroundColor: '#ffffff',
     },
-  });
+  })
 
   function mapStateToProps(state){
     return {

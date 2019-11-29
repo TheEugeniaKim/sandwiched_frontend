@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, Button, Image } from 'react-native'
+import { View, Text, Button, Image, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 
 
@@ -20,6 +20,16 @@ function HomeScreen(props){
         </View>
     )
 }  
+
+const styles = StyleSheet.create({
+    container: {
+      justifyContent: 'center',
+      marginTop: 150,
+      padding: 120,
+      backgroundColor: '#ffffff',
+    },
+  })
+
 
 function mapStateToProps(state){
     return {
