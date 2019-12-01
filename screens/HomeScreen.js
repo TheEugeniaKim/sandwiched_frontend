@@ -5,8 +5,8 @@ import { connect } from 'react-redux'
 
 function HomeScreen(props){
     return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text>Hangry?</Text>
+        <View style={styles.container}>
+            <Text style={styles.header}>Hangry?</Text>
             <Image 
                 style={{height: 130, width: 240}}
                 source={require('../sandwiched_logo.png')} 
@@ -27,7 +27,14 @@ const styles = StyleSheet.create({
       marginTop: 150,
       padding: 120,
       backgroundColor: '#22DBE7',
+      alignItems: 'center' 
     },
+    header: {
+        justifyContent: 'center',
+        fontSize: 28,
+        marginVertical: 4,
+        marginHorizontal: 16
+    }
   })
 
 

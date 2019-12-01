@@ -32,7 +32,6 @@ const options = {
 class SignupScreen extends React.Component {
 
     createUser = (value) => {
-        console.log(value.first_name)
         fetch('http://smi.local:3000/users', {
             method: "POST",
             headers: {
@@ -48,15 +47,12 @@ class SignupScreen extends React.Component {
                 phone: value.phone
             })
         })
-        .then(response => response.json())
-        .then(user = () => console.log(user))
         .then(this.props.navigation.navigate('Login'))
     }
 
     handleSubmit = () => {
         value = this._form.getValue()
         this.createUser(value)
-    
     }
 
     render() {

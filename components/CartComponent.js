@@ -19,8 +19,7 @@ function CartComponent(props){
                 //     { backgroundColor: selected ? '#6e3b6e' : '#f9c2ff' },
                 // ]}
             >
-
-<Text style={styles.title}> {props.sandwich} </Text>
+            <Text style={styles.title}> {props.sandwich} </Text>
             </TouchableOpacity>
         </View>
     )

@@ -3,6 +3,7 @@ import { View, Text, Button, FlatList, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import { withNavigation } from 'react-navigation'
 import CartComponent from '../components/CartComponent'
+import { create } from 'uuid-js'
 
 function createOrder(props){
     fetch('http://smi.local:3000/orders', {
@@ -12,14 +13,12 @@ function createOrder(props){
             "Accepts":"application/json"
         }, 
         body: JSON.stringify({
-            userId: props.userId
+            user_id: props.userId
         })
     })
     .then(response => response.json())
-    .then(order => console.log(order))
+    .then(order => createSandwichOrder(order, props))
 }
-
-// createSandwichOrder(order, props)
 
 function createSandwichOrder(order, props){
     for (i = 0; i < props.cart.length; i++) {
@@ -30,13 +29,21 @@ function createSandwichOrder(order, props){
                 "Accepts": "application/json"
             },
             body: JSON.stringify({
-                orderId: order.id,
-                sandwichId: props.cart[i].id,
+                order_id: order.id,
+                sandwich_id: props.cart[i].id,
                 price: props.cart[i].price,
                 comment: props.cart[i].comment
             })
         })
+        .then(response => response.json())
+        .then(sandwich_order => console.log(sandwich_order))
     }
+}
+
+
+function handleOnPress(props){
+    createOrder(props)
+    props.navigation.navigate('Confirmation')
 }
 
 function CartScreen(props){
@@ -57,10 +64,7 @@ function CartScreen(props){
             
             <Button 
                 title="Order Now"
-                onPress={() => {
-                    createOrder(props)
-                    props.navigation.navigate('Confirmation')
-                }}
+                onPress={() => {handleOnPress(props)}}
             />
 
             <Button 
