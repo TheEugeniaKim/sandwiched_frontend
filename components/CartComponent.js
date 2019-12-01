@@ -6,7 +6,7 @@ import { withNavigation } from 'react-navigation'
 
 function CartComponent(props){
 
-    // let sandwichObject = props.sandwiches.find(sandwich => sandwich.name === props.sandwich)
+    let sandwichObject = props.sandwiches.find(sandwich => sandwich.name === props.sandwich)
 
     return(
         <View style={styles.item}>
@@ -20,7 +20,7 @@ function CartComponent(props){
                 // ]}
             >
 
-            <Text style={styles.title}> {props.sandwich} </Text>
+<Text style={styles.title}> {props.sandwich} </Text>
             </TouchableOpacity>
         </View>
     )

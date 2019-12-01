@@ -31,8 +31,8 @@ const options = {
 
 class SignupScreen extends React.Component {
 
-    createUser = () => {
-        const value = this._form.getValue()
+    createUser = (value) => {
+        console.log(value.first_name)
         fetch('http://smi.local:3000/users', {
             method: "POST",
             headers: {
@@ -49,10 +49,14 @@ class SignupScreen extends React.Component {
             })
         })
         .then(response => response.json())
-        .then(user = () => {
-        this.props.login(user)
-        })
+        .then(user = () => console.log(user))
         .then(this.props.navigation.navigate('Login'))
+    }
+
+    handleSubmit = () => {
+        value = this._form.getValue()
+        this.createUser(value)
+    
     }
 
     render() {
@@ -71,7 +75,7 @@ class SignupScreen extends React.Component {
                         /> 
                     <Button 
                         title="Create User"
-                        onPress={this.createUser} 
+                        onPress={this.handleSubmit.bind(this)} 
                         />
                 </KeyboardAwareScrollView>
             </View>

@@ -9,7 +9,7 @@ function ConfirmationScreen(props){
                 style={{height: 130, width: 240}}
                 source={require('../sandwiched_logo.png')} 
             />
-            <Text>Congratulations, {this.props.firstName}!</Text>
+            <Text>Congratulations, {props.firstName}!</Text>
             <Text> You have placed your order and it's waiting for you at the store!</Text> 
             
         </View>
