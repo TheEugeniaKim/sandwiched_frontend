@@ -3,7 +3,7 @@ import { View, Text, Button, FlatList, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import { withNavigation } from 'react-navigation'
 import CartComponent from '../components/CartComponent'
-import { create } from 'uuid-js'
+import { clearCart } from '../actions/userActions'
 
 function createOrder(props){
     fetch('http://smi.local:3000/orders', {
@@ -37,6 +37,7 @@ function createSandwichOrder(order, props){
         })
         .then(response => response.json())
         .then(sandwich_order => console.log(sandwich_order))
+        .then(props.clearCart())
     }
 }
 
@@ -86,6 +87,6 @@ function mapStateToProps(state){
     }
 }
 
-const connectedCartScreen = connect(mapStateToProps, null)(withNavigation(CartScreen))
+const connectedCartScreen = connect(mapStateToProps, {clearCart})(withNavigation(CartScreen))
 
 export default connectedCartScreen

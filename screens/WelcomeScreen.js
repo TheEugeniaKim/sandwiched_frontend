@@ -2,6 +2,7 @@ import React from 'react'
 import { View, Text, Button, Image } from 'react-native'
 import { connect } from 'react-redux'
 import { getIngredients, getSandwiches } from '../actions/menuActions'
+import HeaderComponent from '../components/HeaderComponent'
 
 class WelcomeScreen extends React.Component {
     
@@ -19,21 +20,23 @@ class WelcomeScreen extends React.Component {
           })
     }
 
+    
     render () {
         return (
-            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                <Image 
-                    style={{height: 130, width: 240}}
-                    source={require('../sandwiched_logo.png')} 
-                />
-                <Text>HELLO, {this.props.firstName}!</Text>
-                <Text>You're only a few taps away from your sandwich!</Text> 
-                <Button 
-                    title="Order Now"
-                    onPress={() => {
-                        this.props.navigation.navigate('Menu')}
-                    }
-                />
+            <View style={{ flex: 1 }}>
+                <HeaderComponent /> 
+                    <View style={{ flex: 2, alignItems: 'center', justifyContent: 'center' }}>
+                        <Image 
+                            style={{height: 130, width: 240}}
+                            source={require('../sandwiched_logo.png')} 
+                            />
+                        <Text>HELLO, {this.props.firstName}!</Text>
+                        <Text>You're only a few taps away from your sandwich!</Text> 
+                        <Button 
+                            title="Order Now"
+                            onPress={() => this.props.navigation.navigate('Menu')}
+                            />
+                    </View>
             </View>
         )
     }
