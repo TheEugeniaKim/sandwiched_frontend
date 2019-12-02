@@ -1,25 +1,27 @@
 import React from 'react';
-import { View, Image } from 'react-native'
+import { View } from 'react-native'
 import { Header } from 'react-native-elements'
-import { Ionicons } from '@expo/vector-icons';
-
+import { Ionicons } from '@expo/vector-icons'
+import { withNavigation } from 'react-navigation'
 
 function HeaderComponent(props){
     return (
         <View > 
             <Header 
                 containerStyle = {{backgroundColor: '#358E96', height: 100}}
-                centerComponent={{ text: "SANDWICHED", style: { color: '#fff', fontSize: 30, fontWeight: 'bold'} }}
                 leftComponent = {<Ionicons 
-                    name='ios-menu'
-                    style={{width: 150, height: 150}}
+                    name='ios-menu' 
                     type='ionicon'
+                    color='white'
+                    size={50}
                     onPress={()=>props.navigation.navigate('MenuNavigator')} 
                 />}
+                centerComponent={{ text: "SANDWICHED", style: { color: '#fff', fontSize: 25, fontWeight: 'bold'} }}
                 rightComponent = {<Ionicons 
                     name='ios-cart'
-                    style={{width: 150, height: 150}}
                     type='ionicon'
+                    color='white'
+                    size={50}
                     onPress={()=>props.navigation.navigate('Cart')} 
                 />}
             />
@@ -27,4 +29,6 @@ function HeaderComponent(props){
     )
 }
 
-export default HeaderComponent
+const connectedHeaderComponent = (withNavigation(HeaderComponent))
+
+export default connectedHeaderComponent
