@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Button, Image, Text, StyleSheet } from 'react-native'
+import { View, Button, Image, Text, Alert, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import { login } from '../actions/userActions'
 import t from 'tcomb-form-native'
@@ -9,14 +9,14 @@ const Form = t.form.Form;
 
 const User = t.struct({
   email: t.String,
-  password: t.String,
+  password: t.String
 });
 
 class LoginScreen extends React.Component {
 
+
   handleSubmit = () => {
     const value = this._form.getValue()
-    const email = value.email 
     fetch('http://smi.local:3000/users/login/', {
       method: "POST",
       headers: {
@@ -24,16 +24,21 @@ class LoginScreen extends React.Component {
         "Accepts": "application/json"
       },
       body: JSON.stringify({
-        email: value.email, 
+        email: value.email 
       })
     })
     .then(response => response.json())
     .then(user => {
-      this.props.login(user)
+      this.handleLogin(user)
     })
-
-
     .then(this.props.navigation.navigate('Welcome'))
+  }
+
+  handleLogin = (user) => {
+    if (user.error)
+      return Alert.alert('User Not Found. Please Try Again')
+    else 
+      return this.props.login(user)
   }
 
   render(){
@@ -55,6 +60,7 @@ class LoginScreen extends React.Component {
           /> 
           <Button
             title="Login"
+            style={styles.button}
             onPress={this.handleSubmit}
           />
         </KeyboardAwareScrollView>
@@ -70,6 +76,11 @@ class LoginScreen extends React.Component {
       padding: 120,
       backgroundColor: '#22DBE7',
     },
+    button: {
+      height: 20,
+      width: 30,
+      borderRadius: 2
+    }
   })
 
   function mapStateToProps(state){

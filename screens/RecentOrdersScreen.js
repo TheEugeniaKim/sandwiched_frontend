@@ -23,7 +23,7 @@ function RecentOrdersShowScreen(props){
 
 function mapStateToProps(state){
     return {
-        selectedSandwichCategory: state.menuReducer.selectedSandwichCategory, 
+        userId: state.userReducer.userId, 
         sandwiches: state.menuReducer.sandwiches
     }
 }

@@ -4,7 +4,8 @@ const initialState = {
     userId: null,
     firstName: "",
     lastName: "",
-    cart: []
+    cart: [],
+    favorites: []
 }
 
 const userReducer = (state = initialState, action) => {
@@ -15,7 +16,8 @@ const userReducer = (state = initialState, action) => {
                 email: action.payload.email,
                 userId: action.payload.id,
                 firstName: action.payload.first_name,
-                lastName: action.payload.last_name
+                lastName: action.payload.last_name,
+                recentOrders: []
             }
         case "ADD_SANDWICH_TO_CART":
             return {...state, 
