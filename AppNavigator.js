@@ -11,29 +11,29 @@ import ConfirmationScreen from './screens/ConfirmationScreen'
 export default createAppContainer( 
     createStackNavigator({
       Welcome: {
-          screen: WelcomeScreen,
-        },
-        Menu: {
-          screen: MenuScreen,
-        },
-        SandwichCategoryShow: {
-          screen: SandwichCategoryShowScreen
-        },
-        SandwichShow: {
-          screen: SandwichShowScreen 
-        },
-        Cart: {
-          screen: CartScreen
-        },
-        Confirmation: {
-          screen: ConfirmationScreen
-        },
-        MenuNavigator: {
-          screen: MenuNavigator,
-        },
-      }, {
+        screen: WelcomeScreen,
+      },
+      Menu: {
+        screen: MenuScreen,
+      },
+      SandwichCategoryShow: {
+        screen: SandwichCategoryShowScreen
+      },
+      SandwichShow: {
+        screen: SandwichShowScreen 
+      },
+      Cart: {
+        screen: CartScreen
+      },
+      Confirmation: {
+        screen: ConfirmationScreen
+      },
+      MenuNavigator: {
+        screen: MenuNavigator,
+      },
+    }, {
         initialRouteParams: 'Home',
-        }
-    )
+      }
+  )
 )
         

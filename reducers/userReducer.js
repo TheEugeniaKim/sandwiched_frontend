@@ -25,6 +25,10 @@ const userReducer = (state = initialState, action) => {
             return {...state,
                 cart: []
             }
+        case "LOGOUT":
+            return {...state, 
+                loggedIn: false
+            }
         default:
             return state
     }

@@ -9,3 +9,7 @@ export function addSandwichToCart(sandwich){
 export function clearCart(){
     return {type: "CLEAR_CART"}
 }
+
+export function logout(){
+    return {type: "LOGOUT"}
+}

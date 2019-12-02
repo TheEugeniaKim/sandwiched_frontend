@@ -1,15 +1,17 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
+import { connect } from 'react-redux'
+import { logout } from './actions/userActions'
 import { withNavigation } from 'react-navigation'
 
 function MenuNavigator(props){
     return(
         <View style={styles.container}>
-            <Text style={styles.title} > Menu </Text>
-            <Text style={styles.title} > Recent Orders </Text>
+            <Text style={styles.title} onPress={() => props.navigation.navigate('Menu')} > Menu </Text>
+            <Text style={styles.title} onPress={() => props.navigation.navigate('RecentOrders')} > Recent Orders </Text>
             <Text style={styles.title} > Favorites </Text>
             <Text style={styles.title} > Account </Text>
-            <Text style={styles.title} > Logout </Text>
+            <Text style={styles.title} onPress={() => props.logout}> Logout </Text>
 
 
         </View>
@@ -31,5 +33,13 @@ const styles = StyleSheet.create({
     },
 })
 
+function mapStateToProps(state){
+    return {
+        loggedIn: state.userReducer.loggedIn
+    }
+}
 
-export default MenuNavigator
+const connectedMenuNavigator = connect(mapStateToProps, {logout})(withNavigation(MenuNavigator))
+
+export default connectedMenuNavigator
+

@@ -13,4 +13,3 @@ export function selectedSandwichCategory(sandwichCategory){
 export function selectedSandwich(sandwich){
     return {type: "SELECT_SANDWICH", payload: sandwich}
 }
-

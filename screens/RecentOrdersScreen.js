@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, FlatList } from 'react-native'
 import { connect } from 'react-redux'
-import SandwichCardComponent from '../components/SandwichCardComponent'
+import RecentOrdersComponent from '../components/RecentOrdersComponent'
 
 function RecentOrdersShowScreen(props){
     
@@ -12,10 +12,10 @@ function RecentOrdersShowScreen(props){
             <Text> {props.selectedSandwichCategory} Sandwiches </Text>
             <FlatList
                 data={sandwiches}
-                renderItem={({item}) => <SandwichCardComponent sandwich={item.name} />}
+                renderItem={({item}) => <RecentOrdersComponent sandwich={item.name} />}
                 keyExtractor={sandwich => sandwich.id.toString()}
             />
-        </View>
+        </View> 
     )
 
 }
