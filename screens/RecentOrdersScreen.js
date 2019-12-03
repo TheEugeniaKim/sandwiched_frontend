@@ -12,7 +12,7 @@ class RecentOrdersShowScreen extends React.Component {
             <View style={flex=1}>
                 <HeaderComponent />
                     <View style={styles.container}>
-                        <Text style={styles.title}> {this.props.selectedSandwichCategory} {this.props.firstName}'s Recent Orders </Text>
+                        <Text style={styles.title}> {this.props.firstName}'s Recent Orders </Text>
                                 <FlatList 
                                     data={this.props.recentOrders}
                                     keyExtractor={item => "" + item.id}
@@ -61,7 +61,7 @@ function mapStateToProps(state){
 // })}
 
 
-const connectedRecentOrdersShowScreen = connect(mapStateToProps, null)(RecentOrdersShowScreen)
+const connectedRecentOrdersScreen = connect(mapStateToProps, null)(RecentOrdersShowScreen)
 
 
-export default connectedRecentOrdersShowScreen
+export default connectedRecentOrdersScreen

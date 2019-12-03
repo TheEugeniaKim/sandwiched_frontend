@@ -5,6 +5,10 @@ import { connect } from 'react-redux'
 import { withNavigation } from 'react-navigation'
 
 
+function handleOnPress(props){
+    props.navigation.navigate('RecentOrderShow')
+}
+
 function RecentOrdersComponent(props){
     
     let priceArray = props.order.sandwiches.map(sandwich => Number(sandwich.price))
@@ -14,6 +18,7 @@ function RecentOrdersComponent(props){
         <ListItem style={styles.item}
             title={`Ordered At: ${props.order.created_at.slice(0,10)}`}
             subtitle={`Price: ${price.toFixed(2)}`}
+            onPress={handleOnPress(props)}
             bottomDivider
             chevron
         />
@@ -34,15 +39,10 @@ const styles = StyleSheet.create({
     },
 })
 
-function mapStateToProps(state){
-    return {
-        recentOrders: state.userReducer.recentOrders,
-        sandwiches: state.menuReducer.sandwiches
-    }
-}
 
 
-const connectedRecentOrdersComponent = connect(mapStateToProps, null)(withNavigation(RecentOrdersComponent))
+
+const connectedRecentOrdersComponent = connect(null, null)(withNavigation(RecentOrdersComponent))
 
 export default connectedRecentOrdersComponent
 

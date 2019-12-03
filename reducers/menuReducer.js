@@ -2,7 +2,8 @@ const initialState = {
     sandwiches: [],
     ingredients: [],
     selectedSandwichCategory: "",
-    selectedSandwich: ""
+    selectedSandwich: "", 
+    selectedOrder: null
 }
 
 const menuReducer = (state = initialState, action) => {

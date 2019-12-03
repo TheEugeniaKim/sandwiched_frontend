@@ -6,6 +6,7 @@ import MenuScreen from './screens/MenuScreen'
 import SandwichCategoryShowScreen from './screens/SandwichCategoryShowScreen'
 import SandwichShowScreen from './screens/SandwichShowScreen'
 import RecentOrdersScreen from './screens/RecentOrdersScreen'
+import RecentOrderShowScreen from './screens/RecentOrderShowScreen'
 import FavoritesScreen from './screens/FavoritesScreen'
 import CartScreen from './screens/CartScreen'
 import ConfirmationScreen from './screens/ConfirmationScreen'
@@ -26,6 +27,9 @@ export default createAppContainer(
       },
       RecentOrders: {
         screen: RecentOrdersScreen
+      },
+      RecentOrderShow: {
+        screen: RecentOrderShowScreen
       },
       Favorites: {
         screen: FavoritesScreen
