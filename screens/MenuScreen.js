@@ -2,6 +2,7 @@ import React from 'react'
 import { View, Text, StyleSheet, FlatList } from 'react-native'
 import { connect } from 'react-redux'
 import SandwichCategoryComponent from '../components/SandwichCategoryComponent'
+import HeaderComponent from '../components/HeaderComponent'
 
 function MenuScreen(props){
     
@@ -17,13 +18,16 @@ function MenuScreen(props){
     ]
 
     return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text> Menu </Text>
-            <FlatList
-                data={categories}
-                renderItem={({item}) => <SandwichCategoryComponent category={item.category}/>}
-                keyExtractor={category => category.id.toString()}
-            />
+        <View >
+            <HeaderComponent />
+                <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+                    <Text> Menu </Text>
+                    <FlatList
+                        data={categories}
+                        renderItem={({item}) => <SandwichCategoryComponent category={item.category}/>}
+                        keyExtractor={category => category.id.toString()}
+                        />
+                </View>
         </View>
     )
 }
