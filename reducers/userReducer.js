@@ -18,7 +18,7 @@ const userReducer = (state = initialState, action) => {
                 userId: action.payload.id,
                 firstName: action.payload.first_name,
                 lastName: action.payload.last_name,
-                recentOrders: [action.payload.orders_recent]
+                recentOrders: action.payload.orders_recent
             }
         case "ADD_SANDWICH_TO_CART":
             return {...state, 

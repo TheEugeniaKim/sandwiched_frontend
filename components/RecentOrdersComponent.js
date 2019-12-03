@@ -1,15 +1,22 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { StyleSheet } from 'react-native'
+import { ListItem } from 'react-native-elements'
 import { connect } from 'react-redux'
 import { withNavigation } from 'react-navigation'
 
 
 function RecentOrdersComponent(props){
-    console.log("Order is:" , props.order)
+    
+    let priceArray = props.order.sandwiches.map(sandwich => Number(sandwich.price))
+    let price = priceArray.reduce((a,b) => a + b, 0)
+
     return(
-        <View style={styles.item}>
-            <Text style={styles.title}> Ordered At: {props.order.created_at} </Text>
-        </View>
+        <ListItem style={styles.item}
+            title={`Ordered At: ${props.order.created_at.slice(0,10)}`}
+            subtitle={`Price: ${price.toFixed(2)}`}
+            bottomDivider
+            chevron
+        />
     )
 }
 
@@ -17,18 +24,20 @@ function RecentOrdersComponent(props){
 const styles = StyleSheet.create({
     item: {
         backgroundColor: '#E39A66',
-        padding: 20,
+        padding: 15,
         marginVertical: 4,
-        marginHorizontal: 16,
+        marginHorizontal: 15,
+        width: 300
     },
     title: {
-        fontSize: 32,
+        fontSize: 25,
     },
 })
 
 function mapStateToProps(state){
     return {
-
+        recentOrders: state.userReducer.recentOrders,
+        sandwiches: state.menuReducer.sandwiches
     }
 }
 
