@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, Button, TextInput, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
-import { addSandwichToCart } from '../actions/userActions'
+import { addSandwichToCart, addSandwichToFavorites } from '../actions/userActions'
 
 
 class SandwichShowScreen extends React.Component {
@@ -20,6 +20,30 @@ class SandwichShowScreen extends React.Component {
         this.props.navigation.navigate("Cart")
     }
 
+    handleAddToFavorites = () => {
+        fetch('http://smi.local:3000/favorite_sandwich', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accepts": "application/json"
+            },
+            body: JSON.stringify({
+                user_id: this.props.userId,
+                sandwich_id: this.sandwich.id
+            })
+        })
+        .then(response => response.json())
+        .then(favoriteSandwich => {
+            if (favoriteSandwich.error) {
+                null
+            } else {
+                this.props.addSandwichToFavorites(favoriteSandwich)
+            }
+        })
+        .then(this.props.navigation.navigate("Favorites"))
+
+    }
+
     render(){
         return(
             <View style={styles.container}>
@@ -35,9 +59,14 @@ class SandwichShowScreen extends React.Component {
                 />
 
                 <Button 
-                    onPress={this.handleAddToCart}
+                    onPress={() => {null}}
                     title="Add to Cart"
                 /> 
+
+                <Button 
+                    onPress={() => {this.handleAddToFavorites()}}
+                    title="Add to Favorites"
+                />
             </View>
         )
     }
@@ -71,10 +100,11 @@ class SandwichShowScreen extends React.Component {
 function mapStateToProps(state){
     return {
         selectedSandwich: state.menuReducer.selectedSandwich,
-        sandwiches: state.menuReducer.sandwiches
+        sandwiches: state.menuReducer.sandwiches,
+        userId: state.userReducer.userId
     }
 }
 
-const connectedSandwichShowScreen = connect(mapStateToProps, {addSandwichToCart})(SandwichShowScreen)
+const connectedSandwichShowScreen = connect(mapStateToProps, {addSandwichToCart, addSandwichToFavorites})(SandwichShowScreen)
 
 export default connectedSandwichShowScreen

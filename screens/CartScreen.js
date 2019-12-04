@@ -37,8 +37,7 @@ function createSandwichOrder(order, props){
             })
         })
         .then(response => response.json())
-        .then(sandwich_order => console.log(sandwich_order))
-        .then(props.clearCart())
+        .then(sandwich_order => props.clearCart())
     }
 }
 

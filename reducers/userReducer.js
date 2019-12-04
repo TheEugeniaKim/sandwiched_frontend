@@ -18,7 +18,8 @@ const userReducer = (state = initialState, action) => {
                 userId: action.payload.id,
                 firstName: action.payload.first_name,
                 lastName: action.payload.last_name,
-                recentOrders: action.payload.orders_recent
+                recentOrders: action.payload.orders_recent,
+                favorites: action.payload.favorite_sandwiches
             }
         case "ADD_SANDWICH_TO_CART":
             return {...state, 
@@ -27,6 +28,10 @@ const userReducer = (state = initialState, action) => {
         case "CLEAR_CART":
             return {...state,
                 cart: []
+            }
+        case "ADD_SANDWICH_TO_FAVORITES":
+            return {...state,
+                favorites: [...state.favorites, action.payload]
             }
         case "LOGOUT":
             return {...state, 

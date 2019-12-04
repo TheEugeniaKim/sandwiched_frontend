@@ -10,6 +10,7 @@ import RecentOrderShowScreen from './screens/RecentOrderShowScreen'
 import FavoritesScreen from './screens/FavoritesScreen'
 import CartScreen from './screens/CartScreen'
 import ConfirmationScreen from './screens/ConfirmationScreen'
+import AccountEditScreen from './screens/AccountEditScreen'
 
 export default createAppContainer( 
     createStackNavigator({
@@ -39,6 +40,9 @@ export default createAppContainer(
       },
       Confirmation: {
         screen: ConfirmationScreen
+      },
+      Account: {
+        screen: AccountEditScreen
       },
       MenuNavigator: {
         screen: MenuNavigator,

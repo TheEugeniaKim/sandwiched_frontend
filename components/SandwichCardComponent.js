@@ -6,7 +6,6 @@ import { withNavigation } from 'react-navigation'
 import { selectedSandwich } from '../actions/menuActions'
 
 function SandwichCardComponent(props){
-
     return(
         <View style={styles.item}>
         <TouchableOpacity
@@ -21,6 +20,7 @@ function SandwichCardComponent(props){
         >
 
         <Text style={styles.title}>{props.sandwich} </Text>
+       
         </TouchableOpacity>
     </View>
     )
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#E39A66',
         padding: 20,
         marginVertical: 4,
-        marginHorizontal: 16,
+        marginHorizontal: 10
     },
     title: {
         fontSize: 32,

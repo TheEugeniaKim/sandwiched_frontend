@@ -3,13 +3,15 @@ import { StyleSheet } from 'react-native'
 import { ListItem } from 'react-native-elements'
 import { connect } from 'react-redux'
 import { withNavigation } from 'react-navigation'
+import { selectedOrder } from '../actions/menuActions'
 
 
 function handleOnPress(props){
+    props.selectedOrder(props.order.id)
     props.navigation.navigate('RecentOrderShow')
 }
 
-function RecentOrdersComponent(props){
+function RecentOrdersComponent(props, id){
     
     let priceArray = props.order.sandwiches.map(sandwich => Number(sandwich.price))
     let price = priceArray.reduce((a,b) => a + b, 0)
@@ -18,7 +20,7 @@ function RecentOrdersComponent(props){
         <ListItem style={styles.item}
             title={`Ordered At: ${props.order.created_at.slice(0,10)}`}
             subtitle={`Price: ${price.toFixed(2)}`}
-            onPress={handleOnPress(props)}
+            onPress={() => {handleOnPress(props)}}
             bottomDivider
             chevron
         />
@@ -40,9 +42,7 @@ const styles = StyleSheet.create({
 })
 
 
-
-
-const connectedRecentOrdersComponent = connect(null, null)(withNavigation(RecentOrdersComponent))
+const connectedRecentOrdersComponent = connect(null, {selectedOrder})(withNavigation(RecentOrdersComponent))
 
 export default connectedRecentOrdersComponent
 
