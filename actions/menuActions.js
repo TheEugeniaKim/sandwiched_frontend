@@ -13,3 +13,7 @@ export function selectedSandwichCategory(sandwichCategory){
 export function selectedSandwich(sandwich){
     return {type: "SELECT_SANDWICH", payload: sandwich}
 }
+
+export function selectedOrder(orderId){
+    return {type: "SELECT_ORDER", payload: orderId}
+}

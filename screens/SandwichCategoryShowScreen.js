@@ -7,9 +7,10 @@ function SandwichCategoryShowScreen(props){
     
     let category = props.selectedSandwichCategory
     let sandwiches = props.sandwiches.filter(sandwich => sandwich.category === category)
+    
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text> {props.selectedSandwichCategory} Sandwiches </Text>
+            <Text style={{fontSize: 30, fontWeight: 'bold'}}> {props.selectedSandwichCategory} Sandwiches </Text>
             <FlatList
                 data={sandwiches}
                 renderItem={({item}) => <SandwichCardComponent sandwich={item.name} />}

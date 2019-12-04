@@ -2,7 +2,8 @@ const initialState = {
     sandwiches: [],
     ingredients: [],
     selectedSandwichCategory: "",
-    selectedSandwich: ""
+    selectedSandwich: "", 
+    selectedOrder: null
 }
 
 const menuReducer = (state = initialState, action) => {
@@ -16,6 +17,8 @@ const menuReducer = (state = initialState, action) => {
             return {...state, selectedSandwichCategory: action.payload}
         case "SELECT_SANDWICH":
             return {...state, selectedSandwich: action.payload}
+        case "SELECT_ORDER":
+            return {...state, selectedOrder: action.payload}
         default:
             return state
     }

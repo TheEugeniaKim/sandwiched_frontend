@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, Button, Image } from 'react-native'
+import { View, Text, Button, Image, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import { getIngredients, getSandwiches } from '../actions/menuActions'
 import HeaderComponent from '../components/HeaderComponent'
@@ -23,11 +23,11 @@ class WelcomeScreen extends React.Component {
     
     render () {
         return (
-            <View style={{ flex: 1 }}>
+            <View style={styles.container}>
                 <HeaderComponent /> 
                     <View style={{ flex: 2, alignItems: 'center', justifyContent: 'center' }}>
                         <Image 
-                            style={{height: 130, width: 240}}
+                            style={styles.logo}
                             source={require('../sandwiched_logo.png')} 
                             />
                         <Text>HELLO, {this.props.firstName}!</Text>
@@ -41,6 +41,17 @@ class WelcomeScreen extends React.Component {
         )
     }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: "#22DBE7"
+  },
+  logo: {
+    height: 130, 
+    width: 240,
+    alignItems: "center"
+  }
+})
 
 function mapStateToProps(state){
     return {
