@@ -4,10 +4,10 @@ import {connect} from 'react-redux'
 import AppNavigator from './AppNavigator';
 
 function Navigator(props){
-  // if (props.loggedIn === true) 
+  if (props.loggedIn === true) 
     return <AppNavigator />
-  // else
-    // return <AuthNavigator />
+  else
+    return <AuthNavigator />
 }
 
 function mapStateToProps(state){
