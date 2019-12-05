@@ -57,22 +57,25 @@ class SignupScreen extends React.Component {
 
     render() {
         return(
-            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <View style={styles.container}>
                 <KeyboardAwareScrollView>
-
-                    <Image 
-                        style={{height: 130, width: 240, justifyContent: 'center'}}
-                        source={require('../sandwiched_logo.png')} 
+                    <View style={styles.logoContainer}> 
+                        <Image 
+                            style={styles.logo}
+                            source={require('../sandwiched_logo.png')} 
                         />
-                    <Form 
-                        ref={c => this._form = c}
-                        type={CreateUser} 
-                        options={options}
+                    </View>
+                    <View style={styles.formContainer}>
+                        <Form 
+                            ref={c => this._form = c}
+                            type={CreateUser} 
+                            options={options}
                         /> 
-                    <Button 
-                        title="Create User"
-                        onPress={this.handleSubmit.bind(this)} 
-                        />
+                    </View>
+                    <Text style={styles.button} onPress={this.handleSubmit.bind(this)}>
+                        Create User
+                    </Text>
+                    
                 </KeyboardAwareScrollView>
             </View>
         )}
@@ -88,6 +91,51 @@ const styles = StyleSheet.create({
         height: Dimensions.get("window").height, 
         width: Dimensions.get("window").width,
     },
+    logo: {
+        height: 130, 
+        width: 240,
+        alignItems: "center",
+        justifyContent: 'center',
+        marginTop: 30,
+    },
+    logoContainer: {
+        flex: 1, 
+        alignItems: 'center', 
+        justifyContent: 'center',
+        backgroundColor: "#22DBE7",
+        marginTop: 30,
+    },
+    formContainer: {
+        flex: 1,
+        flexDirection: 'row',
+        backgroundColor: '#22DBE7',
+        alignItems: 'baseline',
+        alignSelf: 'center',
+        justifyContent: 'center',
+        width: Dimensions.get("window").width,
+        marginTop: 20
+    },
+    button: {
+        fontSize: 35,
+        textAlign: 'center',
+        justifyContent: 'center',
+        alignSelf: 'center',
+        backgroundColor: '#E39A66',
+        width: 150,
+        alignItems: 'center',
+        width: 350,
+        borderRadius: 14,
+        padding: 10,
+        borderWidth: 1,
+        borderRadius: 2,
+        borderColor: '#ddd',
+        borderBottomWidth: 0,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.8,
+        shadowRadius: 2,
+        elevation: 1,
+      },
 })
   
 

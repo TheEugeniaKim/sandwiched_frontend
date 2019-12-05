@@ -6,6 +6,10 @@ export function addSandwichToCart(sandwich){
     return {type: "ADD_SANDWICH_TO_CART", payload: sandwich}
 }
 
+export function removeSanwichFromCart(newCart){
+    return {type: "REMOVE_SANDWICH_FROM_CART", payload: newCart}
+}
+
 export function clearCart(){
     return {type: "CLEAR_CART"}
 }

@@ -3,23 +3,37 @@ import { TouchableOpacity, View, StyleSheet, Text } from 'react-native';
 import Constants from 'expo-constants';
 import { connect } from 'react-redux'
 import { withNavigation } from 'react-navigation'
+import { Ionicons } from '@expo/vector-icons'
+import { removeSanwichFromCart } from '../actions/userActions'
+
 
 function CartComponent(props){
 
     let sandwichObject = props.sandwiches.find(sandwich => sandwich.name === props.sandwich)
 
     return(
-        <View style={styles.item}>
+        <View >
             <TouchableOpacity
+                style={styles.item}
                 onPress={() => {
-                    null 
+                    console.log(props.cart)
+                    console.log('sandwich', props.sandwich)
+                    let newCart = props.cart.filter(sandwich => sandwich.name !== props.sandwich)
+                    props.removeSanwichFromCart(newCart)
                 }}
                 // style={[
                 //     styles.item,
                 //     { backgroundColor: selected ? '#6e3b6e' : '#f9c2ff' },
                 // ]}
             >
-            <Text style={styles.title}> {props.sandwich} </Text>
+                <Text style={styles.title}> {props.sandwich} </Text>
+                <Ionicons 
+                    name='md-remove-circle-outline'
+                    type='ionicon'
+                    color='white'
+                    size={50}
+                    
+                />
             </TouchableOpacity>
         </View>
     )
@@ -31,13 +45,15 @@ const styles = StyleSheet.create({
         marginTop: Constants.statusBarHeight,
     },
     item: {
+        display: 'flex',
+        flexDirection: 'row',
         backgroundColor: '#E39A66',
         padding: 20,
         marginVertical: 4,
         marginHorizontal: 16,
         alignItems: 'center',
         textAlign: 'center',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         backgroundColor: '#E39A66',
         borderRadius: 2,
         width: 350,
@@ -55,6 +71,9 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 32,
     },
+    ionicon: {
+
+    },
 })
 
 function mapStateToProps(state){
@@ -64,7 +83,7 @@ function mapStateToProps(state){
     }
 }
 
-const connectedCartComponent = connect(mapStateToProps, null)(withNavigation(CartComponent))
+const connectedCartComponent = connect(mapStateToProps, {removeSanwichFromCart})(withNavigation(CartComponent))
 
 export default connectedCartComponent
 

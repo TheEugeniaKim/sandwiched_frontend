@@ -25,6 +25,11 @@ const userReducer = (state = initialState, action) => {
             return {...state, 
                 cart: [...state.cart, action.payload]
             }
+        case "REMOVE_SANDWICH_FROM_CART":
+            return {
+                ...state,
+                cart: [...action.payload]
+            }
         case "CLEAR_CART":
             return {...state,
                 cart: []
