@@ -15,12 +15,10 @@ function CartComponent(props){
         <View >
             <TouchableOpacity
                 style={styles.item}
-                onPress={() => {
-                    console.log(props.cart)
-                    console.log('sandwich', props.sandwich)
-                    let newCart = props.cart.filter(sandwich => sandwich.name !== props.sandwich)
-                    props.removeSanwichFromCart(newCart)
-                }}
+                // onPress={() => {
+                //     let newCart = props.cart.filter(sandwich => sandwich.name !== props.sandwich)
+                //     props.removeSanwichFromCart(newCart)
+                // }}
                 // style={[
                 //     styles.item,
                 //     { backgroundColor: selected ? '#6e3b6e' : '#f9c2ff' },
@@ -32,7 +30,10 @@ function CartComponent(props){
                     type='ionicon'
                     color='white'
                     size={50}
-                    
+                    onPress={() => {                        
+                        let newCart = [...props.cart.slice(0, props.index),...props.cart.slice((props.index + 1), props.cart.length)]
+                        props.removeSanwichFromCart(newCart)
+                    }}
                 />
             </TouchableOpacity>
         </View>

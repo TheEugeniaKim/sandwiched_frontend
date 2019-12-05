@@ -8,7 +8,8 @@ import SandwichCardComponent from '../components/SandwichCardComponent'
 function FavortiesScreen(props){
    
     let favoriteSandwichesArray = () => {
-        return props.favorites.map(sandwich => {
+        console.log("TEST", props.favorites)
+        const whatThis = props.favorites.map(sandwich => {
             
             props.sandwiches.find(sandwichObj => {
                 sandwichObj.id === sandwich.sandwich_id ? 
@@ -17,6 +18,8 @@ function FavortiesScreen(props){
             })
             return sandwich
         })
+        console.log(whatThis)
+        return whatThis
     }
 
     return (

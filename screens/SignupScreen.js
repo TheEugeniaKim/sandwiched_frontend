@@ -6,6 +6,15 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 
 const Form = t.form.Form;
 
+const options = {
+    fields: {
+      password: {
+        password: true,
+        secureTextEntry: true
+      }
+    }
+};
+
 const CreateUser = t.struct({
     first_name: t.String,
     last_name: t.String,
@@ -14,19 +23,6 @@ const CreateUser = t.struct({
     phone: t.Number,
     birthday: t.Date
 })
-
-const options = {
-    fields : {
-        Recorded_Date: {
-            label: 'birthday',
-            mode: 'date',
-            config: {
-            format: (date) => moment(date).format('DD-MMM-YYYY'),
-            },
-        },
-    }
-}
-
 
 
 class SignupScreen extends React.Component {
@@ -52,6 +48,9 @@ class SignupScreen extends React.Component {
 
     handleSubmit = () => {
         value = this._form.getValue()
+        if(!value){
+            return alert('Please complete the full form')
+        }
         this.createUser(value)
     }
 

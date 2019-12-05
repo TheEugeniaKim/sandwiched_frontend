@@ -63,7 +63,7 @@ function CartScreen(props){
                     <Text style={styles.heading}> {props.firstName}'s Cart </Text>
                     <FlatList
                         data={props.cart}
-                        renderItem={({item}) => <CartComponent sandwich={item.name} />}
+                        renderItem={({item, index}) => <CartComponent sandwich={item.name} index={index} />}
                         keyExtractor={ (item, index) => index.toString()}
                         />
 

@@ -35,9 +35,9 @@ class SandwichShowScreen extends React.Component {
         .then(response => response.json())
         .then(favoriteSandwich => {
             if (favoriteSandwich.error) {
-                null
+                return null 
             } else {
-                this.props.addSandwichToFavorites(favoriteSandwich)
+                this.props.addSandwichToFavorites(favoriteSandwich.payload)
             }
         })
         .then(this.props.navigation.navigate("Favorites"))

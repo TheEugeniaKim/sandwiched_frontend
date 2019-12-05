@@ -7,6 +7,15 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 
 const Form = t.form.Form;
 
+const options = {
+  fields: {
+    password: {
+      password: true,
+      secureTextEntry: true
+    }
+  }
+};
+
 const User = t.struct({
   email: t.String,
   password: t.String
@@ -17,6 +26,9 @@ class LoginScreen extends React.Component {
 
   handleSubmit = () => {
     const value = this._form.getValue()
+    if (!value){
+      return alert('Please complete the full form')
+    }
     fetch('http://smi.local:3000/users/login/', {
       method: "POST",
       headers: {
@@ -41,6 +53,8 @@ class LoginScreen extends React.Component {
       return this.props.login(user)
   }
 
+  
+
   render(){
     return (
       <KeyboardAwareScrollView contentContainerStyle={{flexGrow: 1}} styles={styles.container}>
@@ -64,6 +78,7 @@ class LoginScreen extends React.Component {
             <Form 
               ref={c => this._form = c}
               type={User} 
+              options={options}
             /> 
           </View>
 

@@ -26,7 +26,7 @@ class AccountEditScreen extends React.Component {
                         <Text style={styles.text}> Last Name: {this.props.lastName} </Text>
                         <Text style={styles.text}> Email: {this.props.email} </Text>
                         
-                        <Text style={styles.button} onPress={null} > Edit Account Info (Later) </Text>
+                        {/* <Text style={styles.button} onPress={null} > Edit Account Info (Later) </Text> */}
                     
                     </KeyboardAwareScrollView>
             </View>
