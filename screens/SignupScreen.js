@@ -78,12 +78,17 @@ class SignupScreen extends React.Component {
         )}
 }
 
-// function mapStateToProps(state){
-//     return {
-//       firstName: state.firstName,
-//     }
-//   }
+const Dimensions = require("Dimensions");
+const { height, width } = Dimensions.get("window");
 
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#22DBE7',
+        height: Dimensions.get("window").height, 
+        width: Dimensions.get("window").width,
+    },
+})
   
 
 export default SignupScreen

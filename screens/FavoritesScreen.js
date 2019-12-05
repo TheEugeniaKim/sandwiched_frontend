@@ -20,7 +20,7 @@ function FavortiesScreen(props){
     }
 
     return (
-        <View > 
+        <View style={styles.container}> 
             <HeaderComponent />
                 <View style={styles.container}>
                     <Text style={styles.title}> {props.firstName}'s Favorite Sandwiches </Text>
@@ -34,16 +34,20 @@ function FavortiesScreen(props){
     )
 }
 
+const Dimensions = require("Dimensions");
+const { height, width } = Dimensions.get("window");
+
 const styles = StyleSheet.create({
     container: {
-        alignItems: 'center', 
-        justifyContent: 'center'
+        flex: 3,
+        backgroundColor: '#22DBE7',
+        height: Dimensions.get("window").height, 
+        width: Dimensions.get("window").width,
     },
     title: {
         fontSize: 30,
         fontWeight: 'bold',
-        alignItems: 'center', 
-        justifyContent: 'center'
+        textAlign: 'center',
     },
 })
 

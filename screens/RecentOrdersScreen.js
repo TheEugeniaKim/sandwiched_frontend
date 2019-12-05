@@ -9,17 +9,17 @@ class RecentOrdersShowScreen extends React.Component {
 
     render () {    
         return (
-            <View style={flex=1}>
+            <View style={styles.container}>
                 <HeaderComponent />
                     <View style={styles.container}>
                         <Text style={styles.title}> {this.props.firstName}'s Recent Orders </Text>
-                                <FlatList 
-                                    data={this.props.recentOrders}
-                                    keyExtractor={item => "" + item.id}
-                                    renderItem={({ item }) => {
-                                        return ( <RecentOrdersComponent id={item.id} order={item} />)
-                                    }}
-                                />
+                            <FlatList 
+                                data={this.props.recentOrders}
+                                keyExtractor={item => "" + item.id}
+                                renderItem={({ item }) => {
+                                    return ( <RecentOrdersComponent id={item.id} order={item} />)
+                                }}
+                            />
                             
                     </View> 
             </View>
@@ -27,21 +27,21 @@ class RecentOrdersShowScreen extends React.Component {
     }
 }
 
+const Dimensions = require("Dimensions");
+const { height, width } = Dimensions.get("window");
+
 const styles = StyleSheet.create({
     container: {
-        justifyContent: 'center',
+        flex: 3, 
+        alignItems: 'center', 
         backgroundColor: '#22DBE7',
-        alignItems: 'center'
+        height: Dimensions.get("window").height, 
+        width: Dimensions.get("window").width,
     },
     title: {
         fontWeight: 'bold',
         fontSize: 30
     },
-    button: {
-        height: 20,
-        width: 30,
-        borderRadius: 2
-    }
 })
   
 function mapStateToProps(state){
@@ -52,13 +52,6 @@ function mapStateToProps(state){
         sandwiches: state.menuReducer.sandwiches
     }
 }
-
-// {this.props.recentOrders.map(order => {
-//     return <RecentOrdersComponent 
-//         order={order}
-//         key={order.id}
-//     />
-// })}
 
 
 const connectedRecentOrdersScreen = connect(mapStateToProps, null)(RecentOrdersShowScreen)

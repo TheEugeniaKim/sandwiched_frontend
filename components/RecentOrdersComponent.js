@@ -19,7 +19,7 @@ function RecentOrdersComponent(props, id){
     return(
         <ListItem style={styles.item}
             title={`Ordered At: ${props.order.created_at.slice(0,10)}`}
-            subtitle={`Price: $${price.toFixed(2)}`}
+            subtitle={`Price: ${price.toFixed(2)}`}
             onPress={() => {handleOnPress(props)}}
             bottomDivider
             chevron

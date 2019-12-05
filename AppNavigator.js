@@ -49,10 +49,11 @@ export default createAppContainer(
       },
     }, {
         initialRouteParams: 'Home',
+        headerMode: 'none',
+        
       },{
-      headerMode: 'none',
       navigationOptions: {
-        headerVisible: false,
+        headerVisible: 'false'
       }
     }
   )

@@ -6,7 +6,6 @@ import { withNavigation } from 'react-navigation'
 
 function HeaderComponent(props){
     return (
-        <View > 
             <Header 
                 containerStyle = {{backgroundColor: '#358E96', height: 100}}
                 leftComponent = {<Ionicons 
@@ -25,7 +24,6 @@ function HeaderComponent(props){
                     onPress={()=>props.navigation.navigate('Cart')} 
                 />}
             />
-        </View>
     )
 }
 

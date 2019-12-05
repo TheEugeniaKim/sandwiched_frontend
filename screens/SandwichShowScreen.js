@@ -48,8 +48,8 @@ class SandwichShowScreen extends React.Component {
         return(
             <View style={styles.container}>
                 <Text style={styles.title}> {this.props.selectedSandwich} </Text>
-                <Text > {this.ingredients} </Text>
-                <Text> Price: ${this.sandwich.price} </Text>
+                <Text style={styles.ingredients}> {this.ingredients} </Text>
+                <Text style={styles.price}> Price: ${this.sandwich.price} </Text>
 
                 <TextInput 
                     placeholder="Comment" 
@@ -57,44 +57,81 @@ class SandwichShowScreen extends React.Component {
                     value={this.state.comment}
                     style={styles.input}
                 />
-
-                <Button 
-                    onPress={() => {null}}
-                    title="Add to Cart"
-                /> 
-
-                <Button 
-                    onPress={() => {this.handleAddToFavorites()}}
-                    title="Add to Favorites"
-                />
+                <Text onPress={() => {this.handleAddToCart()}} style={styles.button}> Add To Cart </Text>
+                <View style={styles.margin}>
+                <Text onPress={() => {this.handleAddToFavorites()}} style={styles.button}> Add To Favorites </Text>
+                </View>
+            
             </View>
         )
     }
 }
 
-    const styles = StyleSheet.create({
-        container: {
-            flex: 1, 
-            alignItems: 'center', 
-            justifyContent: 'center'
-        },
-        item: {
-            backgroundColor: '#E39A66',
-            padding: 20,
-            marginVertical: 4,
-            marginHorizontal: 16,
-        },
-        title: {
-            fontSize: 32,
-        },
-        input: {
-            backgroundColor: "white",
-            paddingLeft: 5,
-            marginVertical: 10,
-            height: 35,
-            borderRadius: 10
-        }
-    })
+const Dimensions = require("Dimensions");
+const { height, width } = Dimensions.get("window");
+
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1, 
+        alignItems: 'center', 
+        justifyContent: 'center',
+        backgroundColor: '#22DBE7',
+        height: Dimensions.get("window").height, 
+        width: Dimensions.get("window").width,
+    },
+    item: {
+        backgroundColor: '#E39A66',
+        padding: 20,
+        marginVertical: 4,
+        marginHorizontal: 16,
+    },
+    title: {
+        fontSize: 40,
+        fontWeight: 'bold',
+        textAlign: 'center'
+    },
+    ingredients: {
+        fontSize: 20,
+        textAlign: 'center',
+    },
+    price: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        textAlign: 'center',
+    },
+    input: {
+        backgroundColor: "white",
+        paddingLeft: 5,
+        marginVertical: 10,
+        height: 150,
+        width: 300,
+        borderRadius: 10
+    },
+    button: {
+        fontSize: 35,
+        alignItems: 'center',
+        textAlign: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#E39A66',
+        borderRadius: 2,
+        width: 350,
+        borderRadius: 14,
+        padding: 10,
+        borderWidth: 1,
+        borderRadius: 2,
+        borderColor: '#ddd',
+        borderBottomWidth: 0,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.8,
+        shadowRadius: 2,
+        elevation: 1,
+    },
+    margin: {
+        marginTop: 20
+    }
+})
 
 
 function mapStateToProps(state){

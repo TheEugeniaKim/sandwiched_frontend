@@ -17,6 +17,7 @@ export default createAppContainer(
         },
     }, {
         initialRouteParams: 'Home',
+            headerMode: 'none'
         }
 ))
 

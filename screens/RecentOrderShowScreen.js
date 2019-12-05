@@ -31,6 +31,7 @@ class RecentOrderShowScreen extends React.Component{
     // }
     
     render () {
+
         let order = this.props.recentOrders.find(order => order.id === this.props.selectedOrder)
         let sandwichArray = order.sandwiches
         let sandwichOrderArray = order.sandwich_orders
@@ -43,51 +44,70 @@ class RecentOrderShowScreen extends React.Component{
                 return sandwich
             })
         }
-            
+
         return (
-            <View> 
-                <View style={flex=1}>
-                    <HeaderComponent />
-                        <View style={styles.container}>
-                            <Text style={styles.title}> Express Re-Order? </Text>
+            <View style={styles.container} > 
 
-                                <FlatList 
-                                    data={dataArray()}
-                                    keyExtractor={item => "" + item.id}
-                                    renderItem={({ item }) => {
-                                        return ( 
-                                            <TouchableOpacity 
-                                                onPress={() => {this.handleOnPress(item)}}
-                                                style={styles.item}
-                                            > 
-                                                <Text> {item.name} </Text>
-                                                <Text> {item.comment}</Text>
-                                                <Text> ${item.price} </Text>
-                                            </TouchableOpacity>
+                <HeaderComponent />
 
-                                        )
-                                    }}
-                                />
+                <Text style={styles.title}> Express Re-Order? </Text>
 
-                            {/* <Text style={styles.button} onPress={() => {this.handleTextOnPress(sandwichOrderArray)}} > Add Items to Cart </Text> */}
-                                
-                        </View> 
-                </View>
+                <FlatList 
+                    data={dataArray()}
+                    keyExtractor={item => "" + item.id}
+                    renderItem={({ item }) => {
+                        return ( 
+                            <TouchableOpacity 
+                            onPress={() => {this.handleOnPress(item)}}
+                            style={styles.item}
+                            > 
+                                <Text style={styles.textName}> {item.name} </Text>
+                                <Text style={styles.textComment}> {item.comment}</Text>
+                                <Text style={styles.textPrice}> ${item.price} </Text>
+                            </TouchableOpacity>
+                        )
+                    }}
+                />
+
             </View>
         )
     }
 }
 
+const Dimensions = require("Dimensions");
+const { height, width } = Dimensions.get("window");
+
 const styles = StyleSheet.create({
     container: {
-        justifyContent: 'center'
+        flex: 1, 
+        alignItems: 'center', 
+        backgroundColor: '#22DBE7',
+        height: Dimensions.get("window").height, 
+        width: Dimensions.get("window").width,
     },
     item: {
         backgroundColor: '#E39A66',
         padding: 15,
         marginVertical: 4,
         marginHorizontal: 15,
-        width: 300
+        width: 300,
+        flex: 1,
+        justifyContent: 'center',
+        alignSelf: 'center',
+        textAlign: 'center',
+        fontSize: 35,
+        alignItems: 'center',
+        width: 350,
+        borderRadius: 14,
+        borderWidth: 1,
+        borderRadius: 2,
+        borderColor: '#ddd',
+        borderBottomWidth: 0,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.8,
+        shadowRadius: 2,
+        elevation: 1,
     },
     title: {
         fontSize: 25,
@@ -100,10 +120,20 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         justifyContent: 'center',
         alignContent: 'center'
+    },
+    textName: {
+        fontSize: 20,
+    },
+    textComment: {
+        fontSize: 15 
+    },
+    textPrice: {
+        fontSize: 15
     }
 })
 
 
+//* <Text style={styles.button} onPress={() => {this.handleTextOnPress(sandwichOrderArray)}} > Add Items to Cart </Text> */
 
 // <TextInput
 // style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}

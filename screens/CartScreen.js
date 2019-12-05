@@ -57,34 +57,79 @@ function CartScreen(props){
     let total = totalArray.reduce((a , b) => a + b, 0)
 
     return(
-        <View style={flex=1}>
+        <View style={styles.container}>
             <HeaderComponent />
                 <View>
-                    <Text> {props.firstName}'s Cart </Text>
+                    <Text style={styles.heading}> {props.firstName}'s Cart </Text>
                     <FlatList
                         data={props.cart}
                         renderItem={({item}) => <CartComponent sandwich={item.name} />}
                         keyExtractor={ (item, index) => index.toString()}
                         />
 
-                    <Text> Total: ${total.toFixed(2)} </Text>
-                    
-                    <Button 
-                        title="Order Now"
-                        onPress={() => {handleOnPress(props)}}
-                        />
+                    <View style={styles.buttonContainer} >
+                        <Text style={styles.total} > Total: ${total.toFixed(2)} </Text>
 
-                    <Button 
-                        title="Add More to Cart"
-                        onPress={() => {
-                            props.navigation.navigate('Menu')
-                        }}
-                        />
+                        <Text onPress={() => {handleOnPress(props)}} style={styles.button}> Order Now </Text>
+
+                        <Text onPress={() => {props.navigation.navigate('Menu')}} style={styles.button}> Add More Items To Cart </Text>
+                    
+                    </View> 
+                    
                 </View>
         </View>
     )
 }
 
+const Dimensions = require("Dimensions");
+const { height, width } = Dimensions.get("window");
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#22DBE7',
+        height: Dimensions.get("window").height, 
+        width: Dimensions.get("window").width,
+    },
+    heading: {
+        fontSize: 40,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        marginTop: 20,
+    },
+    total: {
+        fontSize: 30,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        marginTop: 20,
+    },
+    buttonContainer: {
+        alignItems: 'center',
+        backgroundColor: '#22DBE7',
+        justifyContent: 'flex-end'
+    },
+    button: {
+        fontSize: 25,
+        alignItems: 'center',
+        textAlign: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#E39A66',
+        borderRadius: 2,
+        width: 350,
+        borderRadius: 14,
+        padding: 10,
+        borderWidth: 1,
+        borderRadius: 2,
+        borderColor: '#ddd',
+        borderBottomWidth: 0,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.8,
+        shadowRadius: 2,
+        elevation: 1,
+        marginTop: 15
+      },
+})
 
 function mapStateToProps(state){
     return {

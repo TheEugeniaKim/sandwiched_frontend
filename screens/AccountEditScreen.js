@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, Button, Image  } from 'react-native'
+import { View, Text, Button, Image, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import t from 'tcomb-form-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
@@ -11,52 +11,77 @@ class AccountEditScreen extends React.Component {
 
     render() {
         return(
-            <View>
+            <View style={styles.container}>
                 <HeaderComponent />
-                    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                    <View style={styles.logoContainer}>
                         <Image 
-                            style={{height: 130, width: 240}}
-                            source={require('../sandwiched_logo.png')} 
-                            />
-
-                        <KeyboardAwareScrollView>
-
-                            <Text> First Name: {this.props.firstName} </Text> 
-                            <Text> Last Name: {this.props.lastName} </Text>
-                            <Text> Email: {this.props.email} </Text>
-                            <Button 
-                                title="Edit Account Info (Later)"
-                                onPress={null} 
-                                />
-                        </KeyboardAwareScrollView>
+                        style={styles.logo}
+                        source={require('../sandwiched_logo.png')} 
+                        />
                     </View>
+
+                    <KeyboardAwareScrollView>
+
+                        <Text style={styles.text}> First Name: {this.props.firstName} </Text> 
+                        <Text style={styles.text}> Last Name: {this.props.lastName} </Text>
+                        <Text style={styles.text}> Email: {this.props.email} </Text>
+                        
+                        <Text style={styles.button} onPress={null} > Edit Account Info (Later) </Text>
+                    
+                    </KeyboardAwareScrollView>
             </View>
-        )}
-        
-    // Form = t.form.Form;
-
-    // EditUser = t.struct({
-    //     first_name: t.String,
-    //     last_name: t.String,
-    //     email: t.String,
-    //     password: t.String,
-    //     phone: t.Number,
-    //     birthday: t.Date
-    // })
-
-    // options = {
-    //     fields : {
-    //         Recorded_Date: {
-    //             label: 'birthday',
-    //             mode: 'date',
-    //             config: {
-    //             format: (date) => moment(date).format('DD-MMM-YYYY'),
-    //             },
-    //         },
-    //     }
-    // }
-
+        )
+    }
 }
+
+const Dimensions = require("Dimensions");
+const { height, width } = Dimensions.get("window");
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#22DBE7',
+        height: Dimensions.get("window").height, 
+        width: Dimensions.get("window").width,
+    },
+    logoContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        marginBottom: 120,
+        borderRadius: 10
+    },
+    logo: {
+        height: 175, 
+        width: 350,
+        borderRadius: 8
+    },
+    text: {
+        fontSize: 25,
+    },
+    button: {
+        flex: 1,
+        justifyContent: 'center',
+        alignSelf: 'center',
+        textAlign: 'center',
+        fontSize: 30,
+        backgroundColor: '#E39A66',
+        width: 150,
+        alignItems: 'center',
+        width: 350,
+        borderRadius: 14,
+        padding: 10,
+        borderWidth: 1,
+        borderRadius: 2,
+        borderColor: '#ddd',
+        borderBottomWidth: 0,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.8,
+        shadowRadius: 2,
+        elevation: 1,
+        marginTop: 20,
+    }
+})
 
 function mapStateToProps(state){
     return {

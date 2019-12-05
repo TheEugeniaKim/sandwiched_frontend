@@ -13,15 +13,14 @@ function MenuScreen(props){
         {id: 4, category: "Chef's Selection"},
         {id: 5, category: "Fish"},
         {id: 6, category: "Gourmet Turkey"},
-        {id: 7, category: "Grilled Steak"},
-        {id: 8, category: "Build Your Own"}
+        {id: 7, category: "Grilled Steak"}
     ]
 
     return (
-        <View >
+        <View style={styles.container}>
             <HeaderComponent />
-                <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-                    <Text> Menu </Text>
+                <View style={styles.container}>
+                    <Text style={styles.text}> Menu </Text>
                     <FlatList
                         data={categories}
                         renderItem={({item}) => <SandwichCategoryComponent category={item.category}/>}
@@ -31,6 +30,29 @@ function MenuScreen(props){
         </View>
     )
 }
+
+const Dimensions = require("Dimensions");
+const { height, width } = Dimensions.get("window");
+
+const styles = StyleSheet.create({
+    headerContainer: {
+        flex: 1,
+        backgroundColor: '#22DBE7',
+        height: Dimensions.get("window").height, 
+        width: Dimensions.get("window").width,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    container: {
+        flex: 3,
+        backgroundColor: '#22DBE7',
+    },
+    text: {
+        fontSize: 40,
+        fontWeight: 'bold',
+        textAlign: 'center',
+    },
+})
 
 function mapStateToProps(state){
     return {newState: state} 
