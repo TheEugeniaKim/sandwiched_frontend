@@ -18,8 +18,6 @@ export function addSandwichToFavorites(favoriteSandwich){
     return {type: "ADD_SANDWICH_TO_FAVORITES", payload: favoriteSandwich}
 }
 
-
-
 export function logout(){
     return {type: "LOGOUT"}
 }

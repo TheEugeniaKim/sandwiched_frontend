@@ -1,7 +1,6 @@
 import React from 'react'
-import { View, Text, Button, Image, StyleSheet } from 'react-native'
+import { View, Text, Image, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
-import t from 'tcomb-form-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { withNavigation } from 'react-navigation'
 import HeaderComponent from '../components/HeaderComponent'
@@ -25,9 +24,7 @@ class AccountEditScreen extends React.Component {
                         <Text style={styles.text}> First Name: {this.props.firstName} </Text> 
                         <Text style={styles.text}> Last Name: {this.props.lastName} </Text>
                         <Text style={styles.text}> Email: {this.props.email} </Text>
-                        
-                        {/* <Text style={styles.button} onPress={null} > Edit Account Info (Later) </Text> */}
-                    
+                                            
                     </KeyboardAwareScrollView>
             </View>
         )

@@ -1,6 +1,5 @@
 import React from 'react'
 import { View, Text, FlatList, TouchableOpacity, StyleSheet } from 'react-native'
-import { ListItem } from 'react-native-elements'
 import { connect } from 'react-redux'
 import { withNavigation } from 'react-navigation'
 import HeaderComponent from '../components/HeaderComponent'
@@ -12,7 +11,6 @@ class RecentOrderShowScreen extends React.Component{
         comment: ""
     }
     
-    
     onChangeText = (text) => {
         this.setState({
             comment: []
@@ -23,12 +21,6 @@ class RecentOrderShowScreen extends React.Component{
         this.props.addSandwichToCart(item)
         this.props.navigation.navigate('Cart')
     }
-
-    // handleTextOnPress = (sandwichOrderArray) => {
-    //     console.log(sandwichOrderArray)
-    //     this.props.addSandwichToCart(sandwichOrderArray)
-    //     this.props.navigation.navigate('Cart')
-    // }
     
     render () {
 
@@ -132,14 +124,6 @@ const styles = StyleSheet.create({
     }
 })
 
-
-//* <Text style={styles.button} onPress={() => {this.handleTextOnPress(sandwichOrderArray)}} > Add Items to Cart </Text> */
-
-// <TextInput
-// style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
-// onChangeText={text => onChangeText(text)}
-// value={sadnwich_orders.comment}
-// />
 function mapStateToProps(state){
     return {
         userId: state.userReducer.userId,

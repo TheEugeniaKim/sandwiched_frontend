@@ -13,10 +13,6 @@ function SandwichCardComponent(props){
                 props.selectedSandwich(props.sandwich)
                 props.navigation.navigate('SandwichShow')
             }}
-            // style={[
-            //     styles.item,
-            //     { backgroundColor: selected ? '#6e3b6e' : '#f9c2ff' },
-            // ]}
         >
 
         <Text style={styles.title}>{props.sandwich} </Text>

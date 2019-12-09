@@ -16,10 +16,6 @@ function SandwichCategoryComponent(props){
                 props.selectedSandwichCategory(props.category)
                 props.navigation.navigate('SandwichCategoryShow')
             }}
-            // style={[
-            //     styles.item,
-            //     { backgroundColor: selected ? '#6e3b6e' : '#f9c2ff' },
-            // ]}
         >
 
         <Text style={styles.title}>{props.category}</Text>

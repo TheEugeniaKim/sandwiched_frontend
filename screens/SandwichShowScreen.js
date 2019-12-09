@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, Button, TextInput, StyleSheet } from 'react-native'
+import { View, Text, TextInput, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import { addSandwichToCart, addSandwichToFavorites } from '../actions/userActions'
 

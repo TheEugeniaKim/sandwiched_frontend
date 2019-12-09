@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, Button, FlatList, Alert, StyleSheet } from 'react-native'
+import { View, Text, FlatList, Alert, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import { withNavigation } from 'react-navigation'
 import CartComponent from '../components/CartComponent'

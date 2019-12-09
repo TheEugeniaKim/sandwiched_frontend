@@ -1,6 +1,5 @@
 import React from 'react'
-import { View, Text, FlatList, List, StyleSheet } from 'react-native'
-import { ListItem } from 'react-native-elements'
+import { View, Text, FlatList, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import RecentOrdersComponent from '../components/RecentOrdersComponent'
 import HeaderComponent from '../components/HeaderComponent'

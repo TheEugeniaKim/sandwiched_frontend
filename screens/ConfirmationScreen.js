@@ -2,7 +2,6 @@ import React from 'react'
 import { View, Text, Image, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import HeaderComponent from '../components/HeaderComponent'
-import { Header } from 'react-navigation-stack'
 
 function ConfirmationScreen(props){
     return (
