@@ -14,4 +14,4 @@ A sandwich ordering app for iOS that enables a user to choose from a menu of san
 
 ## Demo 
 
-![](demo.gif)
+![demo](demo.gif)
